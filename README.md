@@ -22,16 +22,18 @@ let config = {
       },
       'console': {
         'colorize': 'all',
-        'level': process.env.LOG_LEVEL || 'error',
+        'level': process.env.LOG_LEVEL || 'info',
         'timestamp': true
       }
     }
   };
 
 let logger = require('mobi-logger')(config);
+// or
+let logger = require('mobi-logger')('mongodb');// options may be console, mongodb or file
 
 logger.info('This is an info');
 logger.debug('This is a debug');
-logger.
+logger.error('This is an error');
 
 ```

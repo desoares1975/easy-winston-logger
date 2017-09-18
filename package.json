@@ -1,0 +1,15 @@
+{
+  "name": "mobi-logger",
+  "version": "1.0.0",
+  "description": "Logger for Node.js servers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Blendimob Dev Team",
+  "license": "ISC",
+  "dependencies": {
+    "winston": "^2.3.1",
+    "winston-mongodb": "^2.0.10"
+  }
+}
