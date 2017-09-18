@@ -42,7 +42,7 @@ const logger = config => {
     'transports': [new transports[configuration.type](configuration.options[configuration.type])]
   });
 
-  if (configurtion.turnOff) {
+  if (configuration.turnOff) {
     winston.remove(winston.transports[configuration.type]);
   }
 
