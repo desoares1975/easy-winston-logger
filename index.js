@@ -1,10 +1,11 @@
 
 const winston = require('winston');
 require('winston-mongodb').MongoDB;
+require('winston-daily-rotate-file');
 const transports = {
   'console': winston.transports.Console,
   'mongodb': winston.transports.MongoDB,
-  'file': winston.transports.File
+  'file': winston.transports.DailyRotateFile
 };
 
 
@@ -17,32 +18,39 @@ winston.addColors({
 
 const logger = config => {
   let configuration = ((typeof config === 'object') ? config : {
+    'turnOff': false,
     'type': (typeof config === 'string' ? config : 'console'),
     'options': {
       'console': {
         'colorize': 'all',
-        'level': process.env.LOG_LEVEL || 'info',
+        'level': 'silly',
         'timestamp': true
       },
       'file': {
-        'filename': 'logs.txt',
-        'level': process.env.LOG_LEVEL || 'error',
+        'filename': 'logs',
+        'maxsize': 10240,
         'timestamp': true
       },
       'mongodb': {
         'db': 'mongodb://localhost:27017/mobiserver',
         'collection': 'logs',
-        'level': process.env.LOG_LEVEL || 'error',
+        'level': 'error',
         'timestamp': true
       }
     }
   });
 
+  if (configuration.type === 'file') {
+    configuration.options.file.name = configuration.type;
+    configuration.options.file.handleExceptions = true;
+    configuration.options.file.datePattern = '.yyyy-MM-dd.txt';
+  }
+
   let logger = new winston.Logger({
     'transports': [new transports[configuration.type](configuration.options[configuration.type])]
   });
 
-  winston.transports[configuration.type].silent = configuration.turnOff;
+  logger.transports[configuration.type].silent = configuration.turnOff;
 
   return logger;
 }

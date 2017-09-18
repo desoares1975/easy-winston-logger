@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "winston": "^2.3.1",
+    "winston-daily-rotate-file": "^1.7.0",
     "winston-mongodb": "^2.0.10"
   }
 }
