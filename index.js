@@ -38,9 +38,15 @@ const logger = config => {
     }
   });
 
-  return new winston.Logger({
+  let logger = new winston.Logger({
     'transports': [new transports[configuration.type](configuration.options[configuration.type])]
   });
+
+  if (config.turnOff) {
+    winston.remove(winston.transports[configuration.type]);
+  }
+
+  return logger;
 }
 
 module.exports = logger;
