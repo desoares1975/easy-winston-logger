@@ -7,7 +7,9 @@ npm install --save git@bitbucket.org:fabio_blendimob/mobi-logger.git
 ### Usage ###
 ```js
 let config = {
-    'type': 'console',
+    'turnOff': false,
+    'type': 'file',
+    //you may have only the used option, in this case file
     'options': {
       'mongodb': {
         'db': 'mongodb://localhost:27017/mobiserver',
@@ -16,13 +18,14 @@ let config = {
         'timestamp': true
       },
       'file': {
-        'filename': 'logs.txt',
-        'level': process.env.LOG_LEVEL || 'error',
+        'filename': 'logs',
+        'maxsize': 10240,
+        'level': 'silly',
         'timestamp': true
       },
       'console': {
         'colorize': 'all',
-        'level': process.env.LOG_LEVEL || 'info',
+        'level': 'debug',
         'timestamp': true
       }
     }

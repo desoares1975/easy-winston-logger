@@ -29,6 +29,7 @@ const logger = config => {
       'file': {
         'filename': 'logs',
         'maxsize': 10240,
+        'level': 'silly',
         'timestamp': true
       },
       'mongodb': {
