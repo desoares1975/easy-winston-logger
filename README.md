@@ -2,7 +2,7 @@
 
 ### Setup ###
 ```bash
-npm install --save git@bitbucket.org:fabio_blendimob/mobi-logger.git
+git clone git@bitbucket.org:blendmobi/mobilogger.git
 ```
 ### Usage ###
 ```js
@@ -31,9 +31,9 @@ let config = {
     }
   };
 
-let logger = require('mobi-logger')(config);
+let logger = require('mobilogger')(config);
 // or
-let logger = require('mobi-logger')('mongodb');// options may be console, mongodb or file
+let logger = require('mobilogger')('mongodb');// options may be console, mongodb or file
 
 logger.info('This is an info');
 logger.debug('This is a debug');
