@@ -13,7 +13,7 @@ winston.addColors({
   'error': 'red',
   'debug': 'yellow',
   'info': 'blue',
-  'prod': 'green'
+  'silly': 'green'
 });
 
 const logger = config => {
@@ -29,7 +29,7 @@ const logger = config => {
       'file': {
         'filename': 'logs',
         'maxsize': 10240,
-        'level': 'silly',
+        'level': 'error',
         'timestamp': true
       },
       'mongodb': {
