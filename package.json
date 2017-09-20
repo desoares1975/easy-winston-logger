@@ -6,15 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Blendimob Dev Team",
-  "repository" :{
+  "author": "Blendmobi dev team",
+   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:blendmobi/mobilogger.git"
+    "url": "git+ssh://git@bitbucket.org/blendmobi/mobilogger.git"
   },
   "license": "ISC",
   "dependencies": {
     "winston": "^2.3.1",
     "winston-daily-rotate-file": "^1.7.0",
     "winston-mongodb": "^2.0.10"
-  }
+  },
+  "homepage": "https://bitbucket.org/blendmobi/mobilogger#readme"
 }
