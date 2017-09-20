@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Blendmobi dev team",
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/blendmobi/mobilogger.git"
   },

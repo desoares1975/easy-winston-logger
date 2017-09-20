@@ -2,7 +2,7 @@
 
 ### Setup ###
 ```bash
-git clone git@bitbucket.org:blendmobi/mobilogger.git
+npm install --save git+ssh://git@bitbucket.org/blendmobi/mobilogger.git
 ```
 ### Usage ###
 ```js
