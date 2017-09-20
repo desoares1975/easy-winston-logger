@@ -13,7 +13,7 @@ winston.addColors({
   'error': 'red',
   'debug': 'yellow',
   'info': 'blue',
-  'silly': 'green'
+  'silly': 'pink'
 });
 
 const logger = config => {
