@@ -9,7 +9,7 @@
   "author": "Blendimob Dev Team",
   "repository" :{
     "type": "git",
-    "url": "https://bitbucket.org:blendmobi/mobilogger.git"
+    "url": "git@bitbucket.org:blendmobi/mobilogger.git"
   },
   "license": "ISC",
   "dependencies": {
