@@ -1,3 +1,4 @@
+'use strict';
 
 const winston = require('winston');
 require('winston-mongodb').MongoDB;
@@ -54,6 +55,6 @@ const logger = config => {
   logger.transports[configuration.type].silent = configuration.turnOff;
 
   return logger;
-}
+};
 
 module.exports = logger;
