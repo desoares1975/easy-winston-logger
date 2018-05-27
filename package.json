@@ -1,21 +1,30 @@
 {
-  "name": "mobilogger",
-  "version": "1.0.6",
+  "name": "easy-winston-logger",
+  "version": "0.9.3",
   "description": "Logger for Node.js servers",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Blendmobi dev team",
+  "author": "desoares1975",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/blendmobi/mobilogger.git"
+    "url": "git@github.com:desoares1975/easy-winston-logger.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "winston": "^2.3.1",
     "winston-daily-rotate-file": "^1.7.0",
     "winston-mongodb": "^2.0.10"
   },
-  "homepage": "https://bitbucket.org/blendmobi/mobilogger#readme"
+  "homepage": "git@github.com:desoares1975/easy-winston-logger.gitr#readme",
+  "devDependencies": {},
+  "keywords": [
+    "logger",
+    "winston",
+    "easy",
+    "wrapper",
+    "leveled",
+    "logger"
+  ]
 }

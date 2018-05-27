@@ -1,10 +1,12 @@
-# README #
+# Easy Winston Logger
 
 ### Setup ###
 ```bash
-npm install --save git+ssh://git@bitbucket.org/blendmobi/mobilogger.git
+npm install --save easy-winston-logger
 ```
+
 ### Usage ###
+
 ```js
 let config = {
     'turnOff': false,
@@ -12,7 +14,7 @@ let config = {
     //you may have only the used option, in this case file
     'options': {
       'mongodb': {
-        'db': 'mongodb://localhost:27017/mobiserver',
+        'db': 'mongodb://localhost:27017/logs',
         'collection': 'logs',
         'level': process.env.LOG_LEVEL || 'error',
         'timestamp': true
@@ -31,9 +33,9 @@ let config = {
     }
   };
 
-let logger = require('mobilogger')(config);
+let logger = require('easy-winston-logger')(config);
 // or
-let logger = require('mobilogger')('mongodb');// options may be console, mongodb or file
+let logger = require('easy-winston-logger')('mongodb');// options may be console, mongodb or file
 
 logger.info('This is an info');
 logger.debug('This is a debug');
