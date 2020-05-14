@@ -13,8 +13,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "winston": "^2.3.1",
-    "winston-daily-rotate-file": "^1.7.0",
+    "winston": "^2.4.4",
+    "winston-daily-rotate-file": "^1.7.2",
     "winston-mongodb": "^2.0.10"
   },
   "homepage": "git@github.com:desoares1975/easy-winston-logger.gitr#readme",
