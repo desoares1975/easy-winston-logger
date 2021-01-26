@@ -1,10 +1,11 @@
 {
   "name": "easy-winston-logger",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Logger for Node.js servers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --exit",
+    "testdev": "nodemon --exec mocha"
   },
   "author": "desoares1975",
   "repository": {
@@ -18,7 +19,10 @@
     "winston-mongodb": "^5.0.5"
   },
   "homepage": "git@github.com:desoares1975/easy-winston-logger.gitr#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.7"
+  },
   "keywords": [
     "logger",
     "winston",
