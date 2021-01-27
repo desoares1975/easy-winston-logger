@@ -1,16 +1,14 @@
 'use strict';
 
 const winston = require('winston');
-require('winston-mongodb');
-require('winston-daily-rotate-file');
+const { MongoDB } = require('winston-mongodb');
+const  DailyRotateFile = require('winston-daily-rotate-file');
 
 const transports = {
-  console: 'Console',
-  mongodb: 'MongoDB',
-  file: 'DailyRotateFile'
+  console: winston.transports.Console,
+  mongodb: MongoDB,
+  file: DailyRotateFile
 };
-
-
 
 winston.addColors({
   error: 'red',
@@ -43,21 +41,21 @@ function createLogger(config) {
       }
     }
   });
-  const transport = transports[configuration.type];
-  const options = transport === 'MongoDB' ? {
+  const Transport = transports[configuration.type];
+  const options = configuration.type === 'mongodb' ? {
     poolSize: 2,
     useNewUrlParser: true,
     useUnifiedTopology: true
   } : null;
 
-  if (transport === 'DailyRotateFile') {
+  if (configuration.type === 'file') {
     configuration.options.file.filename = `${configuration.options.file.name || 'logs'}-%DATE%.log`;
     configuration.options.file.handleExceptions = true;
     configuration.options.file.datePattern = 'YYYY-MM-DD';
   }
 
   const logger = winston.createLogger({
-    transports: [new winston.transports[transport]({ ...configuration.options[configuration.type], options })],
+    transports: [new Transport({ ...configuration.options[configuration.type], options })],
     silent: !!configuration.turnOff
   });
 

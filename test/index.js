@@ -4,18 +4,18 @@ const logger = require('../index.js');
 const info = logger({
   type: 'console',
   options: {
-    console: {}
+    console: {
+      colorize: 'all',
+      level: 'silly',
+      timestamp: true
+    }
   }
 });
 const silent = logger({
   type: 'console',
   turnOff: true,
   options: {
-    console: {
-      colorize: 'all',
-      level: 'silly',
-      timestamp: true
-    }
+    console: {}
   }
 });
 
