@@ -57,12 +57,12 @@ describe('Tests logger', () => {
   })
 
   it('Should instanciate the MongoDB logger', () => {
-    mongo.error('MongoDB log for MongoDB', { OK: true })
+    mongo.error('MongoDB log for MongoDB', { meta: 'ERROR!!!!!!!!!!!!!!'})
     assert(mongo);
   })
 
   it('Should instanciate the file logger', () => {
-    file.error('MongoDB log for MongoDB', { meta: 'OK' })
+    file.error('MongoDB log for file', { meta: 'OK' })
     assert(file);
   })
 })
