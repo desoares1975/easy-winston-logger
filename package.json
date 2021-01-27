@@ -1,6 +1,6 @@
 {
   "name": "easy-winston-logger",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Logger for Node.js servers",
   "main": "index.js",
   "scripts": {

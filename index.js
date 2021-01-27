@@ -17,8 +17,8 @@ winston.addColors({
   silly: 'green'
 });
 
-const logger = config => {
-  let configuration = ((typeof config === 'object') ? config : {
+function logger(config) {
+  const configuration = ((typeof config === 'object') ? config : {
     turnOff: false,
     type: (typeof config === 'string' ? config : 'console'),
     options: {
@@ -41,15 +41,20 @@ const logger = config => {
       }
     }
   });
+  const options = configuration.type === 'mongodb' ? {
+    poolSize: 2,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  } : null;
 
   if (configuration.type === 'file') {
-    configuration.options.file.name = configuration.type;
+    configuration.options.file.filename = `${configuration.options.file.name || 'logs'}-%DATE%.log`;
     configuration.options.file.handleExceptions = true;
-    configuration.options.file.datePattern = '.yyyy-MM-dd.txt';
+    configuration.options.file.datePattern = 'YYYY-MM-DD';
   }
 
   let logger = winston.createLogger({
-    transports: [new transports[configuration.type](configuration.options[configuration.type])],
+    transports: [new transports[configuration.type]({ ...configuration.options[configuration.type], options })],
     silent: !!configuration.turnOff
   });
 

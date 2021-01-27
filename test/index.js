@@ -4,11 +4,7 @@ const logger = require('../index.js');
 const info = logger({
   type: 'console',
   options: {
-    console: {
-      colorize: 'all',
-        level: 'silly',
-        timestamp: true
-    }
+    console: {}
   }
 });
 const silent = logger({
@@ -17,19 +13,56 @@ const silent = logger({
   options: {
     console: {
       colorize: 'all',
-        level: 'silly',
-        timestamp: true
+      level: 'silly',
+      timestamp: true
     }
   }
 });
 
+const mongo = logger({
+  type: 'mongodb',
+  turnOff: false,
+  options: {
+    mongodb: {
+      db: 'mongodb://localhost:27017/test',
+      collection: 'logs',
+      level: 'debug',
+      timestamp: true
+    }
+  }
+});
+
+const file = logger({
+  type: 'file',
+  turnOff: false,
+  options: {
+    file: {
+      name: 'test-file',
+      maxsize: 10240,
+      level: 'silly',
+      timestamp: true
+    }
+  }
+})
+
 describe('Tests logger', () => {
-  it('Should instanciante the logger', () => {
-    info.info('OK for info!')
+  it('Should instanciate the logger', () => {
+    info.info('Testing OK for info!', { data: { ok: true } })
     assert(info);
   })
-  it('Should instanciante the logger', () => {
-    silent.info('OK for silent!')
-    assert(info);
+
+  it('Should instanciate the silent logger', () => {
+    silent.error('No log for silent!')
+    assert(silent);
+  })
+
+  it('Should instanciate the MongoDB logger', () => {
+    mongo.error('MongoDB log for MongoDB', { OK: true })
+    assert(mongo);
+  })
+
+  it('Should instanciate the file logger', () => {
+    file.error('MongoDB log for MongoDB', { meta: 'OK' })
+    assert(file);
   })
 })

@@ -9,26 +9,26 @@ npm install --save easy-winston-logger
 
 ```js
 let config = {
-    'turnOff': false,
-    'type': 'file',
+    turnOff: false,
+    type: 'file',
     //you may have only the used option, in this case file
-    'options': {
-      'mongodb': {
-        'db': 'mongodb://localhost:27017/logs',
-        'collection': 'logs',
-        'level': process.env.LOG_LEVEL || 'error',
-        'timestamp': true
+    options: {
+      mongodb: {
+        db: 'mongodb://localhost:27017/logs',
+        collection: 'logs',
+        level: process.env.LOG_LEVEL || 'error',
+        timestamp: true
       },
-      'file': {
-        'filename': 'logs',
-        'maxsize': 10240,
-        'level': 'silly',
-        'timestamp': true
+      file: {
+        name: 'filename',
+        maxsize: 10240,
+        level: 'silly',
+        timestamp: true
       },
-      'console': {
-        'colorize': 'all',
-        'level': 'debug',
-        'timestamp': true
+      console: {
+        colorize: 'all',
+        level: 'debug',
+        timestamp: true
       }
     }
   };
