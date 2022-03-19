@@ -14,14 +14,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "winston": "^3.3.3",
-    "winston-daily-rotate-file": "^4.5.0",
-    "winston-mongodb": "^5.0.5"
+    "winston": "^3.6.0",
+    "winston-daily-rotate-file": "^4.6.1",
+    "winston-mongodb": "^5.0.7"
   },
   "homepage": "git@github.com:desoares1975/easy-winston-logger.gitr#readme",
   "devDependencies": {
-    "mocha": "^8.2.1",
-    "nodemon": "^2.0.7"
+    "mocha": "^8.4.0",
+    "nodemon": "^2.0.15"
   },
   "keywords": [
     "logger",
