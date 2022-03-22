@@ -12,7 +12,4 @@ on:
 jobs:
   test:
     - run: npm test
-    - uses: coverallsapp/github-action@v1.1.2
-      with:
-        token: ${{ secrets.COVERALLS_TOKEN }}
 
