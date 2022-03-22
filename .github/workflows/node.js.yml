@@ -11,8 +11,8 @@ on:
 
 jobs:
   test:
+    - run: npm test
     - uses: coverallsapp/github-action@v1.1.2
-    - name: Publish to coveralls.io
-        with:
-          github-token: ${{ github.token }}
+      with:
+        github-token: ${{ secrets.COVERALLS_TOKEN }}
 
