@@ -21,7 +21,7 @@
   "homepage": "git@github.com:desoares1975/easy-winston-logger.gitr#readme",
   "devDependencies": {
     "coveralls": "^3.1.1",
-    "mocha": "^8.4.0",
+    "mocha": "^9.2.2",
     "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^2.0.15",
     "nyc": "^15.1.0"
