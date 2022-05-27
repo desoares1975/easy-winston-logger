@@ -1,0 +1,8 @@
+{
+  "reporter"   : ["text", "text-summary", "lcov", "html"],
+
+  "exclude"    : ["./node_modules"],
+  "sourceMap"  : false,
+  "instrument" : false,
+  "all"        : true
+}

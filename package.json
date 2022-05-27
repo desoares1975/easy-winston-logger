@@ -4,6 +4,7 @@
   "description": "Logger for Node.js servers",
   "main": "index.js",
   "scripts": {
+    "coverage": "npm run test | coveralls",
     "test": "mocha --exit",
     "testdev": "nodemon --exec mocha"
   },
