@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "coverage": "npm run test | coveralls",
-    "test": "mocha --exit",
-    "testdev": "nodemon --exec mocha"
+    "test": "jest --ci --collectCoverage",
+    "testdev": "nodemon --exec jest"
   },
   "author": "desoares1975",
   "repository": {
@@ -21,11 +21,8 @@
   },
   "homepage": "git@github.com:desoares1975/easy-winston-logger.gitr#readme",
   "devDependencies": {
-    "coveralls": "^3.1.1",
-    "mocha": "^9.2.2",
-    "mocha-lcov-reporter": "^1.3.0",
-    "nodemon": "^2.0.15",
-    "nyc": "^15.1.0"
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.15"
   },
   "keywords": [
     "logger",
@@ -34,5 +31,16 @@
     "wrapper",
     "leveled",
     "logger"
-  ]
+  ],
+  "jest": {
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  }
 }
