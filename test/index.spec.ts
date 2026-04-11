@@ -135,6 +135,32 @@ describe('Tests logger', () => {
     }, /Invalid config/);
   });
 
+  it('Should default to console transport when type is omitted from config object (line 93 branch)', () => {
+    // Omitting `type` makes configuration.type falsy, exercising the `|| 'console'` fallback
+    const noType = createLogger(
+      // @ts-expect-error - type is required by LoggerConfig; testing the runtime default
+      { options: { console: { level: 'silly' } } }
+    );
+    assert(noType);
+    noType.close();
+  });
+
+  it('Should use "logs" as default filename when name is omitted from file options (line 105 branch)', () => {
+    // No `name` in file options makes fileOpts.name falsy, exercising the `|| 'logs'` fallback
+    const fileNoName = createLogger({
+      type: 'file',
+      turnOff: false,
+      options: {
+        file: {
+          maxsize: 10240,
+          level: 'error'
+        }
+      }
+    });
+    assert(fileNoName);
+    fileNoName.close();
+  });
+
   it('Should return a silent logger without a MongoDB transport when turnOff is true', () => {
     const silentMongo = createLogger({
       type: 'mongodb',
