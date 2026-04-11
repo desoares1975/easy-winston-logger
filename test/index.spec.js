@@ -103,4 +103,43 @@ describe('Tests logger', () => {
     defaultFile.error('Testing default.');
     assert(defaultFile);
   });
+
+  it('Should throw for an unknown transport type', () => {
+    assert.throws(
+      () => logger({ type: 'syslog', options: { syslog: {} } }),
+      /Unknown transport type: syslog/
+    );
+  });
+
+  it('Should throw for null config', () => {
+    assert.throws(
+      () => logger(null),
+      /Invalid config/
+    );
+  });
+
+  it('Should throw for a non-string, non-object config', () => {
+    assert.throws(
+      () => logger(42),
+      /Invalid config/
+    );
+  });
+
+  it('Should return a silent logger without a MongoDB transport when turnOff is true', () => {
+    const silentMongo = logger({
+      type: 'mongodb',
+      turnOff: true,
+      options: {
+        mongodb: {
+          db: 'mongodb://localhost:27017/test',
+          collection: 'logs',
+          level: 'error'
+        }
+      }
+    });
+    assert(silentMongo);
+    assert.strictEqual(silentMongo.silent, true);
+    const hasMongoTransport = silentMongo.transports.some(t => t.constructor.name === 'MongoDB');
+    assert.strictEqual(hasMongoTransport, false);
+  });
 })

@@ -19,7 +19,7 @@
     "winston-daily-rotate-file": "^5.0.0",
     "winston-mongodb": "^7.0.1"
   },
-  "homepage": "git@github.com:desoares1975/easy-winston-logger.gitr#readme",
+  "homepage": "git@github.com:desoares1975/easy-winston-logger.git#readme",
   "devDependencies": {
     "jest": "^30.3.0",
     "nodemon": "^3.1.14"

@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1775874865496" clover="3.2.0">
-  <project timestamp="1775874865496" name="All files">
-    <metrics statements="15" coveredstatements="15" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1" elements="26" coveredelements="26" complexity="0" loc="15" ncloc="15" packages="1" files="1" classes="1"/>
+<coverage generated="1775878653422" clover="3.2.0">
+  <project timestamp="1775878653422" name="All files">
+    <metrics statements="21" coveredstatements="21" conditionals="20" coveredconditionals="18" methods="1" coveredmethods="1" elements="42" coveredelements="40" complexity="0" loc="21" ncloc="21" packages="1" files="1" classes="1"/>
     <file name="index.js" path="/home/desoares/Projects/easy-winston-logger/index.js">
-      <metrics statements="15" coveredstatements="15" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
+      <metrics statements="21" coveredstatements="21" conditionals="20" coveredconditionals="18" methods="1" coveredmethods="1"/>
       <line num="3" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
       <line num="7" count="1" type="stmt"/>
-      <line num="13" count="1" type="stmt"/>
-      <line num="21" count="7" type="cond" truecount="2" falsecount="0"/>
-      <line num="44" count="7" type="stmt"/>
-      <line num="45" count="7" type="cond" truecount="2" falsecount="0"/>
-      <line num="51" count="7" type="cond" truecount="2" falsecount="0"/>
-      <line num="52" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="53" count="2" type="stmt"/>
-      <line num="54" count="2" type="stmt"/>
-      <line num="57" count="7" type="stmt"/>
-      <line num="62" count="7" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="23" count="11" type="cond" truecount="6" falsecount="0"/>
+      <line num="24" count="2" type="stmt"/>
+      <line num="27" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="51" count="9" type="cond" truecount="1" falsecount="1"/>
+      <line num="53" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="54" count="1" type="stmt"/>
+      <line num="57" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="58" count="3" type="stmt"/>
+      <line num="61" count="5" type="stmt"/>
+      <line num="63" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="64" count="1" type="cond" truecount="1" falsecount="1"/>
       <line num="65" count="1" type="stmt"/>
+      <line num="66" count="1" type="stmt"/>
+      <line num="69" count="5" type="stmt"/>
+      <line num="75" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
