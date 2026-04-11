@@ -1,15 +1,17 @@
-const assert = require('assert');
-const logger = require('../index.js');
+import assert from 'assert';
+import createLogger from '../src/index';
 
 describe('Tests logger', () => {
-  let info,
-      silent,
-      mongo,
-      defaultLogger,
-      defaultFile;
+  let info: ReturnType<typeof createLogger>;
+  let silent: ReturnType<typeof createLogger>;
+  let mongo: ReturnType<typeof createLogger>;
+  let file: ReturnType<typeof createLogger>;
+  let defaultLogger: ReturnType<typeof createLogger>;
+  let stringOptionLogger: ReturnType<typeof createLogger>;
+  let defaultFile: ReturnType<typeof createLogger>;
 
   beforeAll(() => {
-    info = logger({
+    info = createLogger({
       type: 'console',
       options: {
         console: {
@@ -19,14 +21,16 @@ describe('Tests logger', () => {
         }
       }
     });
-    silent = logger({
+
+    silent = createLogger({
       type: 'console',
       turnOff: true,
       options: {
         console: {}
       }
     });
-    mongo = logger({
+
+    mongo = createLogger({
       type: 'mongodb',
       turnOff: false,
       options: {
@@ -38,9 +42,11 @@ describe('Tests logger', () => {
         }
       }
     });
-    defaultLogger = logger();
-    stringOptionLogger = logger('console');
-    file = logger({
+
+    defaultLogger = createLogger();
+    stringOptionLogger = createLogger('console');
+
+    file = createLogger({
       type: 'file',
       turnOff: false,
       options: {
@@ -52,7 +58,8 @@ describe('Tests logger', () => {
         }
       }
     });
-    defaultFile = logger({
+
+    defaultFile = createLogger({
       type: 'file',
       turnOff: true,
       options: {
@@ -66,7 +73,10 @@ describe('Tests logger', () => {
   });
 
   afterAll(() => {
-    mongo.clear();
+    // close() flushes and shuts down each transport (MongoDB connection, file
+    // stream/watcher). --forceExit in the test script handles the MongoDB
+    // driver's internal server-selection Timeout which outlives close().
+    [mongo, file, info].forEach(l => l.close());
   });
 
   it('Should instanciate the logger', () => {
@@ -80,7 +90,7 @@ describe('Tests logger', () => {
   });
 
   it('Should instanciate the MongoDB logger', () => {
-    mongo.error('MongoDB log for MongoDB', { meta: 'ERROR!!!!!!!!!!!!!!'})
+    mongo.error('MongoDB log for MongoDB', { meta: 'ERROR!!!!!!!!!!!!!!' });
     assert(mongo);
   });
 
@@ -105,28 +115,28 @@ describe('Tests logger', () => {
   });
 
   it('Should throw for an unknown transport type', () => {
-    assert.throws(
-      () => logger({ type: 'syslog', options: { syslog: {} } }),
-      /Unknown transport type: syslog/
-    );
+    assert.throws(() => {
+      // @ts-expect-error - 'syslog' is not assignable to TransportType
+      createLogger({ type: 'syslog', options: {} });
+    }, /Unknown transport type: syslog/);
   });
 
   it('Should throw for null config', () => {
-    assert.throws(
-      () => logger(null),
-      /Invalid config/
-    );
+    assert.throws(() => {
+      // @ts-expect-error - null is not assignable to LoggerConfig | string
+      createLogger(null);
+    }, /Invalid config/);
   });
 
   it('Should throw for a non-string, non-object config', () => {
-    assert.throws(
-      () => logger(42),
-      /Invalid config/
-    );
+    assert.throws(() => {
+      // @ts-expect-error - number is not assignable to LoggerConfig | string
+      createLogger(42);
+    }, /Invalid config/);
   });
 
   it('Should return a silent logger without a MongoDB transport when turnOff is true', () => {
-    const silentMongo = logger({
+    const silentMongo = createLogger({
       type: 'mongodb',
       turnOff: true,
       options: {
@@ -142,4 +152,4 @@ describe('Tests logger', () => {
     const hasMongoTransport = silentMongo.transports.some(t => t.constructor.name === 'MongoDB');
     assert.strictEqual(hasMongoTransport, false);
   });
-})
+});
