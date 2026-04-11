@@ -1,11 +1,14 @@
 {
   "name": "easy-winston-logger",
-  "version": "0.10.4",
+  "version": "0.2.0",
   "description": "Logger for Node.js servers",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
     "coverage": "npm run test | coveralls",
-    "test": "jest --ci --collectCoverage",
+    "test": "jest --ci --collectCoverage --forceExit",
     "testdev": "nodemon --exec jest"
   },
   "author": "desoares1975",
@@ -19,10 +22,14 @@
     "winston-daily-rotate-file": "^5.0.0",
     "winston-mongodb": "^7.0.1"
   },
-  "homepage": "git@github.com:desoares1975/easy-winston-logger.gitr#readme",
+  "homepage": "https://github.com:desoares1975/easy-winston-logger.git#readme",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.6.0",
     "jest": "^30.3.0",
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "ts-jest": "^29.4.9",
+    "typescript": "^6.0.2"
   },
   "keywords": [
     "logger",
@@ -33,7 +40,15 @@
     "logger"
   ],
   "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/test/**/*.spec.ts"
+    ],
     "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 80,
